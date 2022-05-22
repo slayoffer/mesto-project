@@ -31,7 +31,18 @@
         </button>
       </section>
       <section class="grid-foto">
-        <article class="card">
+        <template id="template-card">
+          <article class="card">
+            <div class="card__image-box">
+              <img class="card__image" src="{{src}}" alt="{{name}}">
+            </div>
+            <div class="card__wrapper-like">
+              <h3 class="card__para">{{name}}</h3>
+              <button class="card__like" type="button"></button>
+            </div>
+          </article>
+        </template>
+        <!-- <article class="card">
           <img class="card__image" src="./img/Karachaevsk.jpg" alt="Фото Карачаевска">
           <div class="card__wrapper-like">
             <h3 class="card__para">Карачаевск</h3>
@@ -72,7 +83,7 @@
             <h3 class="card__para">Карачаево-Черкесск</h3>
             <button class="card__like" type="button"></button>
           </div>
-        </article>
+        </article> -->
       </section>
   </main>
   <footer class="footer">
