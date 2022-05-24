@@ -3,8 +3,8 @@
 
 //попап для профиля
 
-function formSubmitHandler (event) {
-  event.preventDefault(); 
+function formSubmitHandler(event) {
+  event.preventDefault();
   let profileName = document.querySelector("#heading").value;
   let profileSpec = document.querySelector("#subheading").value;
   document.querySelector(".profile__title").innerText = profileName;
@@ -17,7 +17,6 @@ if(buttonEditProfile != null){
     buttonEditProfile.addEventListener("click", function() {
         let profilePopup = document.querySelector("#form-edit-profile");
         profilePopup.classList.add("popup_opened");
-
         let profileName = document.querySelector(".profile__title").innerText;
         let profileSpec = document.querySelector(".profile__subtitle").innerText;
         document.querySelector("#heading").value = profileName;
@@ -33,6 +32,8 @@ if(buttonCloseProfile != null){
             profilePopup.classList.remove("popup_opened");
             let picPopup = document.querySelector("#form-add-card");
             picPopup.classList.remove("popup_opened");
+            let fotoPopup = document.querySelector("#foto-card");
+            fotoPopup.classList.remove("popup_opened");
         });
     });
 }
@@ -52,8 +53,8 @@ if(buttonEditPic != null){
   });
 }
 
-let formPic = document.querySelector("#popup-pic-form");
-formPic.addEventListener("submit", formSubmitHandler);
+// let formPic = document.querySelector("#popup-pic-form");
+// formPic.addEventListener("submit", formSubmitHandler);
 
 //6 готовых карточек
 
@@ -105,6 +106,7 @@ function cardSubmitHandler (event) {
   card.querySelector(".card__image").src = profileLink;
   gridCard.prepend(card);
   document.querySelector("#form-add-card").classList.remove("popup_opened");
+  renderAdded();
 }
 
 
@@ -112,58 +114,54 @@ function cardSubmitHandler (event) {
 let formCard = document.querySelector("#form-add-card");
 formCard.addEventListener("submit", cardSubmitHandler);
 
+//попап для вызова карточки
+
+let arBigFotos = document.querySelectorAll(".card__image");
+if(arBigFotos != null){
+  arBigFotos.forEach(smallFoto => {
+    smallFoto.addEventListener("click", () => {
+      
+      let bigFotoPopup = document.querySelector("#foto-card");
+      bigFotoPopup.querySelector('.popup__foto').src = smallFoto.src;
+      bigFotoPopup.querySelector('.popup__foto').alt = smallFoto.alt;
+      bigFotoPopup.querySelector('.popup__caption').innerText = smallFoto.alt;
+
+      bigFotoPopup.classList.add("popup_opened");
+
+
+   });
+  });
+}
+
+//функция для повтора лайка
+
+function renderAdded() {
+  let arLikeButtons = document.querySelectorAll(".card__like");
+  if(arLikeButtons != null){
+    arLikeButtons.forEach(likeButton => {
+      likeButton.addEventListener("click", () => {
+        likeButton.classList.toggle('card__like_active');
+      });
+    });
+}
+} 
+
+//код для лайка
+
+let arNewLikeButtons = document.querySelectorAll(".card__like");
+if(arNewLikeButtons != null){
+  arNewLikeButtons.forEach(likeNewButton => {
+    likeNewButton.addEventListener("click", () => {
+      likeNewButton.classList.toggle('card__like_active');
+    });
+  });
+
+}
 
 })()
 
-/* <template id="card">
-  <div class="card">
-    <h1 class="card__title">Заголовок</h1>
-    <p></p>
-  </div>
-</template> */
 
 
-// let input = document.querySelector("#text");
-// let addButton = document.querySelector("#add");
-// let template = document.querySelector("#card");
-// let container = document.querySelector("#cards");
-
-// addButton.addEventListener("click", function () {
-//   let text = input.value;
-//   let card = template.content.cloneNode(true).querySelector(".card");
-//   card.querySelector("p").textContent = text;
-//   container.prepend(card); // append()
-//   input.value = "";
-  
-//   let card2 = document.createElement("div");
-//   card2.classList.add("card");
-//   let h1 = document.createElement("h1");
-//   h1.textContent = "Заголовок";
-//   h1.classList.add("card__title");
-//   card2.append(h1);
-//   let p = document.createElement("p");
-//   p.textContent = text;
-//   card2.append(p);
- 
-  
-  
-//   console.log(card2);
-// });
-
-
-// function addCard(name, link) {
-//   // Создаем элемент карточки
-//   console.log(name, link);
-// }
-
-// let initialCards = [
-//     {name: "123135", link: "https://...."},
-//     {name: "fghdhsry", link: "...."}
-//   ];
-
-// initalCards.forEach(card => {
-//   addCard(card.name, card.link);
-// });
 
 
 

@@ -34,10 +34,11 @@
         <template id="template-card">
           <article class="card">
             <div class="card__image-box">
-              <img class="card__image" src="{{src}}" alt="{{name}}">
+              <img class="card__image" src="" alt="">
+              <img class="card__trash" src="/img/Trash.svg" alt="Кнопка Удалить карточку">
             </div>
             <div class="card__wrapper-like">
-              <h3 class="card__para">{{name}}</h3>
+              <h3 class="card__para"></h3>
               <button class="card__like" type="button"></button>
             </div>
           </article>
@@ -116,6 +117,15 @@
         <button class="popup__button" type="submit">Сохранить</button>
       </form>
     </div>
+  </div>
+  <div id="foto-card" class="popup">
+      <div class="popup__foto-box">
+        <button class="popup__toggle" type="button">
+        </button>
+        <img class="popup__foto" src="./img/Dombai.jpg" alt="test">
+        <p class="popup__caption">test</p>
+      </div>
+
   </div>
   <script src="./js/script.js">
   </script>
