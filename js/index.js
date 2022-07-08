@@ -10,7 +10,7 @@
   const pictureName = document.querySelector("#pic-name");
   const pictureLink = document.querySelector("#pic-link");
   const imagePopup = document.querySelector("#foto-card");
-  const imagePopupImg = imagePopup.querySelector(".popup__foto");
+  const imagePopupImg = document.querySelector(".popup__foto");
   const gridCard = document.querySelector(".grid-foto");
 
   
@@ -67,17 +67,17 @@
     const cardElement = templateCard.content.cloneNode(true).querySelector(".card");
     const cardElementImg = cardElement.querySelector(".card__image");
     const cardElementLike = cardElement.querySelector(".card__like")
-    cardElement.querySelector(".card__para").innerText = item["name"];
-    cardElementImg.src = item["link"];
-    cardElementImg.alt = item["name"];
+    cardElement.querySelector(".card__para").innerText = item.name;
+    cardElementImg.src = item.link;
+    cardElementImg.alt = item.name;
     cardElementLike.addEventListener("click", () => {
     cardElementLike.classList.toggle("card__like_active");
 	});
 	
 	cardElement.querySelector('.card__image').addEventListener("click", () => {
-      imagePopupImg.src = item["link"];
-      imagePopupImg.alt = item["name"];
-      imagePopup.querySelector(".popup__caption").innerText = item["name"];
+      imagePopupImg.src = item.link;
+      imagePopupImg.alt = item.name;
+      imagePopup.querySelector(".popup__caption").innerText = item.name;
       openPopup(imagePopup);
     });
     
@@ -106,7 +106,7 @@
   
   //редактирование попапа профиля
   const buttonEditProfile = document.querySelector(".profile__button-pencil");
-  if (buttonEditProfile != null) {
+  if (buttonEditProfile) {
     buttonEditProfile.addEventListener("click", function () {
       openPopup(profilePopup);
       profileName.value = profileTitle.innerText;
@@ -132,7 +132,7 @@
 
   //попап для картинок
   const buttonEditPic = document.querySelector(".profile__button-plus");
-  if (buttonEditPic != null) {
+  if (buttonEditPic) {
     buttonEditPic.addEventListener("click", function () {
       openPopup(cardPopup);
     });
